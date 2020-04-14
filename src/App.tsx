@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Sidemenu from './components/sidemenu/Sidemenu';
+import PostViewerContainer from './containers/post/PostViewerContainer';
+import Layout from './components/layout/Layout';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import MainPage from './components/page/MainPage';
+import PostPage from './components/page/PostPage';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Switch>
+        <Route path="/" component={MainPage} exact />
+        <Route path="/post" component={PostPage} exact />
+      </Switch>
+
+    </>
   );
 }
 
