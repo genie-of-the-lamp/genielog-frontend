@@ -28,12 +28,15 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({children, direction, alignRigh
 }
 
 const gapStyle = (direction: 'row'|'column', gap: number|string) => {
-    const margin = direction === 'row' ? 'marginLeft' : 'marginTop';
-    return css({
-        'button + button': {
-            [margin]: gap
-        }
-    });
+    if (typeof gap ==="number"){     
+        const margin = direction === 'row' ? 'marginLeft' : 'marginTop';
+        return css({
+            'button + button': {
+                [margin]: gap
+            }
+        });
+    }
+    return css(gap)
 };
 
 const alignRightStyle = css`
