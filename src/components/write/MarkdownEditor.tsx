@@ -97,6 +97,7 @@ position: relative;
   flex: 1;
   font-size: 1rem;
   line-height: 1.5;
+  padding-top: 1rem;
   color: ${palette.gray[5]};
   font-family: 'Fira Mono', monospace;
   .cm-header {

@@ -19,6 +19,7 @@ const WriteTitleTextArea = ({title, onTitleChange}: WriteTitleTextAreaProps) => 
 }
 
 const style = css`
+    padding-top: 3rem;
     padding-left: 3rem;
     input {
         padding: 1rem 0;
