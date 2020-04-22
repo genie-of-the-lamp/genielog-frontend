@@ -19,6 +19,9 @@ const PostViewer = ({userId, id, title, body}: PostViewerProps) => {
     );
 }
 
-const style = css``;
+const style = css`
+    display: flex;
+    flex-direction: column;
+`;
 
 export default PostViewer;

@@ -20,7 +20,8 @@ const PostHeader = ({title, username}: PostHeaderProps) => {
 const style = css`
     width: 100%;
     height: 250px;
-    background: ${palette.violet[1]};
+    background: ${palette.gray[1]};
+    border-bottom: 2px solid ${palette.gray[4]};
     padding: 0 30px;
     margin-bottom: 30px;
     box-sizing: border-box;
