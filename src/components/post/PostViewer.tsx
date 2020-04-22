@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import PostHeader from './PostHeader';
+import MarkdownViewer from './MarkdownViewer';
 
 type PostViewerProps = {
     userId: number;
@@ -13,7 +14,7 @@ const PostViewer = ({userId, id, title, body}: PostViewerProps) => {
     return (
         <div css={style}> 
             <PostHeader title={title} username={userId} />
-            <div>{body}</div>
+            <MarkdownViewer markdown={body}/>
         </div>
     );
 }
