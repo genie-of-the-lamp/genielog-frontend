@@ -28,8 +28,8 @@ export const colorSet = {
     violetInverse: {
         color: palette.violet[5],
         background: "none",
-        hover: palette.violet[0],
-        active: palette.violet[1]
+        hover: palette.violet[3],
+        active: palette.violet[6]
     },
     cyan: {
         color: "white",
@@ -52,8 +52,8 @@ export const colorSet = {
     yellowInverse: {
         color: palette.yellow[6],
         background: "none",
-        hover: palette.yellow[0],
-        active: palette.yellow[1]
+        hover: palette.yellow[5],
+        active: palette.yellow[7]
     }
 }
 
