@@ -1,10 +1,8 @@
 import React from 'react';
-import Sidemenu from './components/sidemenu/Sidemenu';
-import PostViewerContainer from './containers/post/PostViewerContainer';
-import Layout from './components/layout/Layout';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import MainPage from './components/page/MainPage';
-import PostPage from './components/page/PostPage';
+import MainPage from './pages/MainPage';
+import PostPage from './pages/PostPage';
+import WritePage from './pages/WritePage';
 
 
 function App() {
@@ -13,6 +11,7 @@ function App() {
       <Switch>
         <Route path="/" component={MainPage} exact />
         <Route path="/post" component={PostPage} exact />
+        <Route path="/write" component={WritePage} exact />
       </Switch>
 
     </>
