@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
 import { Router } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 
 const customHistory = createBrowserHistory();
 
@@ -18,7 +19,10 @@ const sagaMiddleware = createSagaMiddleware({
   }
 });
 
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+const store = createStore(
+  rootReducer, 
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
+);
 
 sagaMiddleware.run(rootSaga);
 
