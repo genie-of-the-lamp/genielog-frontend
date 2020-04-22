@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import post, { postSaga } from './post';
 import { all } from 'redux-saga/effects';
+import write from './write';
 
 const rootReducer = combineReducers({
-    post
+    post,
+    write
 });
 
 export default rootReducer;
