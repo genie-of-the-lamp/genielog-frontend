@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core';
+import { jsx, css, ClassNames } from '@emotion/core';
 import palette, {colorSet} from '../../lib/styles/palette';
 
 type ButtonProps = {
@@ -7,12 +7,14 @@ type ButtonProps = {
     theme: keyof typeof colorSet;
     onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
     disabled?: boolean;
+    className?: string;
+    borderRadius?: number;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, theme, disabled, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ children, theme, disabled, onClick, className, borderRadius }) => {
     return (
         <button
-            css={[style, themes(theme)]}
+            css={[style, themes(theme), {borderRadius}]}
             disabled={disabled}
             onClick={e => {
                 if (onClick) {
@@ -20,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({ children, theme, disabled, onClick }) =
                 }
                 (e.target as HTMLButtonElement).blur();
             }}
+            className={className}
         >
             {children}
         </button>);
@@ -39,7 +42,6 @@ const style = css`
     font-size: 1rem;
     font-weight: 600;
     padding: 0 1rem;
-    border-radius: 0.25rem;
     line-height: 1;
     display: inline-flex;
     align-item: center;
@@ -54,6 +56,18 @@ const style = css`
 `;
 
 function themes(theme: keyof typeof colorSet) {
+    if (theme.endsWith("Inverse")) {
+        return (css`
+            background: ${colorSet[theme].background};
+            color: ${colorSet[theme].color};
+            &: hover {
+                color: ${colorSet[theme].hover};
+            }
+            &: active { 
+                color: ${colorSet[theme].active};
+            }
+        `);  
+    }
     return (css`
         background: ${colorSet[theme].background};
         color: ${colorSet[theme].color};
