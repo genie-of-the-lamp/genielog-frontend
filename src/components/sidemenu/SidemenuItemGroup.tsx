@@ -2,29 +2,32 @@
 import { jsx, css } from '@emotion/core';
 import palette from '../../lib/styles/palette';
 import { useState } from 'react';
-import SidemenuItem, { SidemenuItemProps } from './SidemenuItem';
+import { SidemenuItemProps } from './SidemenuItem';
+import SidemenuItemContainer from '../../containers/sidemenu/SidemenuItemContainer';
 
-type SidemenuItemGroupProps = {
+export type SidemenuItemGroupProps = {
+    id: number;
     title: string;
     itemProps: SidemenuItemProps[];
     isToggled?: boolean;
+    onClicked: () => void;
 };
 
-function SidemenuItemGroup({title, itemProps, isToggled}: SidemenuItemGroupProps) {
-    const [toggled, setToggled] = useState<boolean>(isToggled ? true : false);
+function SidemenuItemGroup({id, title, itemProps, isToggled, onClicked}: SidemenuItemGroupProps) {
     const sidemenuItems = itemProps.map((itemProp: SidemenuItemProps) => 
-        <SidemenuItem 
+        <SidemenuItemContainer
+            groupId={id}
+            id={itemProp.id}
             key={itemProp.text}
             text={itemProp.text}
             uri={itemProp.uri}
-            selected={itemProp.selected} 
         />
     );
 
     return (
         <div css={style}>
-            <h4 onClick={()=>setToggled(!toggled)}>{title}</h4>
-            {toggled && <div>{sidemenuItems}</div>}
+            <h4 onClick={onClicked}>{title}</h4>
+            {isToggled && <div>{sidemenuItems}</div>}
         </div>);
 }
 

@@ -1,17 +1,20 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import palette from '../../lib/styles/palette';
+import { Link } from 'react-router-dom';
 
 export type SidemenuItemProps = {
+    id: number;
     text: string;
     uri: string;
     selected?: boolean;
+    onClicked?: () => void;
 }
 
-function SidemenuItem({text, uri, selected}: SidemenuItemProps) {
+function SidemenuItem({id, text, uri, selected, onClicked}: SidemenuItemProps) {
     return (
         <div css={[style, selected && selectedColor]}>
-            {selected ? <a>{text}</a> : <a href={uri}>{text}</a> }
+            {selected ? <a>{text}</a> : <Link to={uri} onClick={onClicked}>{text}</Link> }
         </div>
     );
 }
