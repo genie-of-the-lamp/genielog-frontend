@@ -5,14 +5,15 @@ import palette from '../../lib/styles/palette';
 type PostHeaderProps = {
     title: string;
     username: string | number;
+    root?: boolean;
 }
 
-const PostHeader = ({title, username}: PostHeaderProps) => {
+const PostHeader = ({title, username, root}: PostHeaderProps) => {
 
     return (
         <div css={style}>
             <h2>{title}</h2>
-            <div><p>{username} username</p> <p>date</p></div>
+            <div><p>{root? "" : `${username} username`}</p> <p>date</p></div>
         </div>
     );
 }
