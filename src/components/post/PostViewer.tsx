@@ -22,6 +22,7 @@ const PostViewer = ({userId, id, title, body}: PostViewerProps) => {
 const style = css`
     display: flex;
     flex-direction: column;
+    padding-bottom: 3.5rem;
 `;
 
 export default PostViewer;
