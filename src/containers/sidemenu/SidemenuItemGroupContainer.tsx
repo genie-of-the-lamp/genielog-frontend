@@ -16,23 +16,11 @@ const SidemenuItemGroupContainer = ({id, title, itemProps}: SidemenuItemGroupCon
     const dispatch = useDispatch();
 
     const toggle = bindActionCreators(toggleMenuGroup, dispatch);
-    
+
     var isToggled = false;
     if (sidemenuState.group[id]) {
         isToggled = sidemenuState.group[id].toggled;
     }
-    
-    // const sidemenuState = useSelector((state: RootState) => state.sidemenu);
-    // const dispatch = useDispatch();
-    // const changeItemState = bindActionCreators(changeState, dispatch);
-    // const selected = sidemenuState.group[groupId].menu[id].selected;
-    // const onClicked = () => {
-    //     const payload = {
-    //         groupId,
-    //         menuId: id
-    //     }
-    //     changeItemState(payload);
-    // }
 
     const onClicked = () => {
         toggle(id);
