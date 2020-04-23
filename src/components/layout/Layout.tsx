@@ -4,9 +4,23 @@ import Header from './Header';
 
 type LayoutProps = {
     children?: React.ReactNode;
+    full?: boolean;
 }
 
-const Layout = ({children}: LayoutProps) => {
+const Layout = ({children, full}: LayoutProps) => {
+
+    const style = css`
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    
+        #content {
+            ${full ? "" : "width: 800px; margin: 0 auto 0;"}
+            height: 100%;
+        }
+    `;
+    
     return (
         <div css={style}>
             <div id="header"><Header/></div>
@@ -16,18 +30,5 @@ const Layout = ({children}: LayoutProps) => {
         </div>
     );
 };
-
-const style = css`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-
-    #content {
-        width: 800px;
-        margin: 0 auto 0;
-        height: 100%;
-    }
-`;
 
 export default Layout;
