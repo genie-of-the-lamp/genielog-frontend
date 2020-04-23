@@ -10,7 +10,9 @@ const Layout = ({children}: LayoutProps) => {
     return (
         <div css={style}>
             <div id="header"><Header/></div>
-            <div id="content">{children}</div>
+            <div id="content">
+                {children}
+            </div>
         </div>
     );
 };
@@ -24,6 +26,7 @@ const style = css`
     #content {
         width: 800px;
         margin: 0 auto 0;
+        height: 100%;
     }
 `;
 
