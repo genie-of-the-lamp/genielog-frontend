@@ -63,12 +63,13 @@ type MarkdownViewerProps = {
 const MarkdownViewer = ({ markdown, noCss }: MarkdownViewerProps) => {
   const html = filter(
     remark()
-      .use(breaks) //용도가 뭐지
-      .use(htmlPlugin)
+      .use(breaks)
       .use(prismPlugin)
-      .processSync(markdown)
+      .use(htmlPlugin)
+      .processSync(markdown.replace("&gt;", ">"))
       .toString()
   );
+
   if (noCss)
     return <div css={noStyle} dangerouslySetInnerHTML={{ __html: html }} />;
   return <div css={style} dangerouslySetInnerHTML={{ __html: html }} />;
