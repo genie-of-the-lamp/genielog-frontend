@@ -44,7 +44,25 @@ const style = css`
     // border: 2px solid ${palette.gray[4]};
     padding: 1rem;
     margin: 2rem;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.125);
+    box-shadow:0 20px 20px rgba(0,0,0,.08);
+    transition: box-shadow 200ms cubic-bezier(.02, .01, .47, 1), transform 200ms cubic-bezier(.02, .01, .47, 1);
+    transition-property: box-shadow, transform;
+    transition-duration: 200ms, 200ms;
+    transition-timing-function: cubic-bezier(0.02, 0.01, 0.47, 1), cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
+  .wrapper: hover {
+    box-shadow: 0 40px 40px rgba(0,0,0,.16);
+    transform: translate(0,-20px);
+    transition-delay: 0s !important;
+    transition-duration: 0.5s;
+  }
+  .wrapper: hover::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 20px;
   }
   .title {
     width: 100%;
