@@ -1,13 +1,41 @@
-import axios from 'axios';
+import client from "./client";
+import qs from "qs";
 
-export async function readPost (id: number) {
-    const response = await axios.get<Post>(`https://jsonplaceholder.typicode.com/posts/${id}`);
-    return response.data;
-}
+export const readPost = async (id: number) => {
+  const response = await client.get<Post>(`/api/posts/${id}`);
+  return response.data;
+};
 
-export interface Post {
-    userId: number;
-    id:     number;
-    title:  string;
-    body:   string;
-}
+export const writePost = async ({ title, body }: Write) => {
+  const response = await client.post("/api/posts", { title, body });
+  return response.data;
+};
+
+export const listPost = async ({ page, email }: ListParams) => {
+  const queryString = qs.stringify({ page, email });
+  const response = await client.get(`/api/posts?${queryString}`);
+  return response.data;
+};
+
+export type Post = {
+  _id: string;
+  title: string;
+  body: string;
+  publishedDate: string;
+  tags?: string[];
+  user: {
+    username: string;
+    email: string;
+  };
+};
+
+export type Write = {
+  title: string;
+  body: string;
+  tags?: string[];
+};
+
+export type ListParams = {
+  page: number;
+  email: string;
+};
