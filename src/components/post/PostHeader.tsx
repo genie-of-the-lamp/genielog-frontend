@@ -18,8 +18,10 @@ const PostHeader = ({ title, user, date, userHide }: PostHeaderProps) => {
     <div css={style}>
       <h2>{title}</h2>
       <div>
-        <p>{userHide ? "" : <Link to="#">{user.username}</Link>}</p>{" "}
-        <p>{date}</p>
+        <div className="info">
+          {userHide ? "" : <Link to="#">{user.username}</Link>}
+        </div>
+        <div className="info">{date}</div>
       </div>
     </div>
   );
@@ -49,9 +51,10 @@ const style = css`
     padding: 0 55px;
   }
 
-  div p {
-    margin: 0;
-    font-size: 0.85rem;
+  .info {
+    margin: 0.85rem 0;
+    font-size: 0.75rem;
+    padding : 0;
   }
 `;
 

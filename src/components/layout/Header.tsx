@@ -50,10 +50,10 @@ const style = css`
   font-size: 1rem;
   font-style: italic;
   font-weight: bold;
-  height: 50px;
+  height: 70px;
   width: 100%;
   box-sizing: border-box;
-  margin-top: 20px;
+  padding-top: 20px;
 
   .user {
     display: flex;
