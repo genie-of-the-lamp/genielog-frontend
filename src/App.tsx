@@ -5,10 +5,14 @@ import WritePage from "./pages/WritePage";
 import SignupPage from "./pages/SignupPage";
 import SigninPage from "./pages/SigninPage";
 import PostListPage from "./pages/PostListPage";
+import { Helmet } from "react-helmet-async";
 
 function App() {
   return (
     <>
+      <Helmet>
+        <title>genielog</title>
+      </Helmet>
       <Switch>
         <Route path="/" component={PostListPage} exact />
         <Route path="/write" component={WritePage} />

@@ -11,6 +11,7 @@ import { createBrowserHistory } from "history";
 import { Router } from "react-router-dom";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import { tempSetUser, check } from "./modules/user";
+import { HelmetProvider } from "react-helmet-async";
 
 const customHistory = createBrowserHistory();
 
@@ -44,7 +45,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router history={customHistory}>
       <Provider store={store}>
-        <App />
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
       </Provider>
     </Router>
   </React.StrictMode>,
