@@ -8,7 +8,6 @@ import WriteTitleTextArea from "../../components/write/WriteTitleTextArea";
 import MarkdownEditor from "../../components/write/MarkdownEditor";
 import { bindActionCreators } from "redux";
 import WriteButtonGroupContainer from "./WriteButtonGroupContainer";
-import MarkdownViewer from "../../components/post/MarkdownViewer";
 
 function WriteEditorContainer() {
   const { title, body } = useSelector((state: RootState) => state.write);

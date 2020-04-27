@@ -1,6 +1,6 @@
 import { readPostAsync, READ_POST } from "./actions";
 import { readPost } from "../../lib/api/post";
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery } from "redux-saga/effects";
 import createAsyncSaga from "../../lib/createAsyncSaga";
 
 // function* readPostSaga(action: ReturnType<typeof readPostAsync.request>){
@@ -15,5 +15,5 @@ import createAsyncSaga from "../../lib/createAsyncSaga";
 const readPostSaga = createAsyncSaga(readPostAsync, readPost);
 
 export function* postSaga() {
-    yield takeEvery(READ_POST, readPostSaga);
+  yield takeEvery(READ_POST, readPostSaga);
 }
