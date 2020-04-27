@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
 import { changeMarkdown, changeTitle } from "../../modules/write";
@@ -8,10 +8,16 @@ import WriteTitleTextArea from "../../components/write/WriteTitleTextArea";
 import MarkdownEditor from "../../components/write/MarkdownEditor";
 import { bindActionCreators } from "redux";
 import WriteButtonGroupContainer from "./WriteButtonGroupContainer";
+import { useHistory } from "react-router-dom";
 
 function WriteEditorContainer() {
-  const { title, body } = useSelector((state: RootState) => state.write);
+  const { title, body, user } = useSelector((state: RootState) => ({
+    title: state.write.title,
+    body: state.write.body,
+    user: state.user.user,
+  }));
   const dispatch = useDispatch();
+  const history = useHistory();
   const actionCreators = useMemo(
     () =>
       bindActionCreators(
@@ -23,6 +29,12 @@ function WriteEditorContainer() {
       ),
     [dispatch]
   );
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/signin");
+    }
+  }, [history, user]);
 
   return (
     <div css={style}>

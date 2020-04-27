@@ -1,6 +1,11 @@
 import { PostState, PostAction } from "./types";
 import { createReducer } from "typesafe-actions";
-import { READ_POST, READ_POST_SUCCESS, READ_POST_FAILURE } from "./actions";
+import {
+  READ_POST,
+  READ_POST_SUCCESS,
+  READ_POST_FAILURE,
+  UNLOAD_POST,
+} from "./actions";
 
 const initialState: PostState = {
   loading: false,
@@ -20,6 +25,7 @@ const post = createReducer<PostState, PostAction>(initialState, {
     error: action.payload,
     post: null,
   }),
+  [UNLOAD_POST]: (state, action) => initialState,
 });
 
 export default post;
