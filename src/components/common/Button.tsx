@@ -8,7 +8,7 @@ type ButtonProps = {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   className?: string;
-  borderRadius?: number;
+  borderRadius?: number | string;
 };
 
 const Button: React.FC<ButtonProps> = ({
