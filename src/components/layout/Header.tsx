@@ -14,26 +14,23 @@ const Header = ({ user, theme, onLogout }: HeaderProps) => {
   return (
     <div css={[style, themes[theme]]}>
       <div>
-        {user && (
+        {user ? (
           <div className="user">
             <p>{user.username}</p>{" "}
             <Link to="#" onClick={onLogout}>
-              logout
+              signout
             </Link>
+          </div>
+        ) : (
+          <div className="user">
+            <Link to="/signin">signin</Link>
           </div>
         )}
       </div>
       <div className="logo">
-        {user ? (
-          <Link to="/">
-            <span>g</span>
-          </Link>
-        ) : (
-          <Link to="/signin">
-            <span>g</span>
-          </Link>
-        )}
-        <Link to="/">enie-of-the-lamp</Link>
+        <Link to="/">
+          <span>g</span>enie-of-the-lamp
+        </Link>
       </div>
     </div>
   );
