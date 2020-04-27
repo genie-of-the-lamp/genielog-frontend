@@ -79,7 +79,7 @@ const style = css`
     flex-direction: column-reverse;
   }
   .desc {
-    height: 110px;
+    height: 108px;
     overflow: hidden;
   }
   .date {
