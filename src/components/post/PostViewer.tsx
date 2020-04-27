@@ -14,9 +14,16 @@ type PostViewerProps = {
   loading: boolean;
   error: AxiosError | null;
   onDelete: () => void;
+  onModify: () => void;
 };
 
-const PostViewer = ({ post, loading, error, onDelete }: PostViewerProps) => {
+const PostViewer = ({
+  post,
+  loading,
+  error,
+  onDelete,
+  onModify,
+}: PostViewerProps) => {
   const [modalState, setModalState] = useState(false);
   const onClickDelete = () => {
     setModalState(true);
@@ -46,6 +53,9 @@ const PostViewer = ({ post, loading, error, onDelete }: PostViewerProps) => {
         date={post.publishedDate}
       />
       <ButtonGroup direction="row" gap="" alignRight>
+        <Button theme="violetInverse" onClick={onModify}>
+          수정
+        </Button>
         <Button theme="violetInverse" onClick={onClickDelete}>
           삭제
         </Button>

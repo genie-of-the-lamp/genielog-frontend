@@ -19,6 +19,11 @@ export const listPost = async ({ page, email }: ListParams) => {
 
 export const deletePost = (id: number) => client.delete(`/api/posts/${id}`);
 
+export const modifyPost = async ({ id, title, body }: Modify) => {
+  const response = await client.patch(`/api/posts/${id}`, { title, body });
+  return response.data;
+};
+
 export type Post = {
   _id: string;
   title: string;
@@ -41,3 +46,7 @@ export type ListParams = {
   page: number;
   email: string;
 };
+
+export interface Modify extends Write {
+  id: number | string;
+}

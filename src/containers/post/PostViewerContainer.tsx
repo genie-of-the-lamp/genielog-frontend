@@ -5,6 +5,7 @@ import PostViewer from "../../components/post/PostViewer";
 import { readPostAsync } from "../../modules/post";
 import { withRouter, useHistory } from "react-router-dom";
 import { deletePost } from "../../lib/api/post";
+import { setPost } from "../../modules/write";
 
 function PostViewerContainer({ match }: any) {
   const { postId } = match.params;
@@ -31,12 +32,20 @@ function PostViewerContainer({ match }: any) {
     }
   };
 
+  const onModify = () => {
+    if (post) {
+      dispatch(setPost(post));
+      history.push("/write");
+    }
+  };
+
   return (
     <PostViewer
       post={post}
       loading={loading}
       error={error}
       onDelete={onDelete}
+      onModify={onModify}
     />
   );
 }
