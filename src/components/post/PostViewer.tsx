@@ -15,6 +15,7 @@ type PostViewerProps = {
   error: AxiosError | null;
   onDelete: () => void;
   onModify: () => void;
+  privilege?: boolean;
 };
 
 const PostViewer = ({
@@ -23,6 +24,7 @@ const PostViewer = ({
   error,
   onDelete,
   onModify,
+  privilege,
 }: PostViewerProps) => {
   const [modalState, setModalState] = useState(false);
   const onClickDelete = () => {
@@ -52,14 +54,16 @@ const PostViewer = ({
         user={post.user}
         date={post.publishedDate}
       />
-      <ButtonGroup direction="row" gap="" alignRight>
-        <Button theme="violetInverse" onClick={onModify}>
-          수정
-        </Button>
-        <Button theme="violetInverse" onClick={onClickDelete}>
-          삭제
-        </Button>
-      </ButtonGroup>
+      {privilege && (
+        <ButtonGroup direction="row" gap="" alignRight>
+          <Button theme="violetInverse" onClick={onModify}>
+            수정
+          </Button>
+          <Button theme="violetInverse" onClick={onClickDelete}>
+            삭제
+          </Button>
+        </ButtonGroup>
+      )}
       <MarkdownViewer markdown={post.body} />
       <PostRemoveModal
         visible={modalState}

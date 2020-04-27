@@ -9,9 +9,12 @@ import { setPost } from "../../modules/write";
 
 function PostViewerContainer({ match }: any) {
   const { postId } = match.params;
-  const { post, loading, error } = useSelector(
-    (state: RootState) => state.post
-  );
+  const { post, loading, error, user } = useSelector((state: RootState) => ({
+    post: state.post.post,
+    loading: state.post.loading,
+    error: state.post.error,
+    user: state.user.user,
+  }));
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -46,6 +49,7 @@ function PostViewerContainer({ match }: any) {
       error={error}
       onDelete={onDelete}
       onModify={onModify}
+      privilege={post?.user.email === user?.email}
     />
   );
 }
