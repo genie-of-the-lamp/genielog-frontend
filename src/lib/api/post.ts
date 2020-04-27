@@ -17,6 +17,8 @@ export const listPost = async ({ page, email }: ListParams) => {
   return response.data;
 };
 
+export const deletePost = (id: number) => client.delete(`/api/posts/${id}`);
+
 export type Post = {
   _id: string;
   title: string;

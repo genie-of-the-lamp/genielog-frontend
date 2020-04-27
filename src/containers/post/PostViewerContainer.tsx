@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
 import PostViewer from "../../components/post/PostViewer";
 import { readPostAsync } from "../../modules/post";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
+import { deletePost } from "../../lib/api/post";
 
 function PostViewerContainer({ match }: any) {
   const { postId } = match.params;
@@ -11,6 +12,7 @@ function PostViewerContainer({ match }: any) {
     (state: RootState) => state.post
   );
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(readPostAsync.request(postId));
@@ -20,7 +22,23 @@ function PostViewerContainer({ match }: any) {
     // }
   }, [dispatch, postId]);
 
-  return <PostViewer post={post} loading={loading} error={error} />;
+  const onDelete = async () => {
+    try {
+      await deletePost(postId);
+      history.push("/");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return (
+    <PostViewer
+      post={post}
+      loading={loading}
+      error={error}
+      onDelete={onDelete}
+    />
+  );
 }
 
 export default withRouter(PostViewerContainer);
