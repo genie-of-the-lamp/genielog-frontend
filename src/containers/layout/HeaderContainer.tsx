@@ -6,8 +6,9 @@ import { signout } from "../../modules/user";
 
 type HeaderContainerProps = {
   theme?: "default" | "inverse";
+  hideUserInfo?: boolean;
 };
-const HeaderContainer = ({ theme }: HeaderContainerProps) => {
+const HeaderContainer = ({ theme, hideUserInfo }: HeaderContainerProps) => {
   const { user } = useSelector((state: RootState) => ({
     user: state.user.user,
   }));
@@ -17,7 +18,14 @@ const HeaderContainer = ({ theme }: HeaderContainerProps) => {
     dispatch(signout());
   };
 
-  return <Header user={user} theme={theme} onLogout={onLogout} />;
+  return (
+    <Header
+      user={user}
+      theme={theme}
+      onLogout={onLogout}
+      hideUserInfo={hideUserInfo}
+    />
+  );
 };
 
 export default HeaderContainer;

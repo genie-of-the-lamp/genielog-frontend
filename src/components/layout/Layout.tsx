@@ -7,9 +7,10 @@ type LayoutProps = {
   children?: React.ReactNode;
   full?: boolean;
   headerTheme?: "default" | "inverse";
+  hideUserInfo?: boolean;
 };
 
-const Layout = ({ children, full, headerTheme }: LayoutProps) => {
+const Layout = ({ children, full, headerTheme, hideUserInfo }: LayoutProps) => {
   const style = css`
     width: 100%;
     height: 100%;
@@ -30,7 +31,7 @@ const Layout = ({ children, full, headerTheme }: LayoutProps) => {
     <div css={style}>
       <div id="header">
         {headerTheme ? (
-          <HeaderContainer theme={headerTheme} />
+          <HeaderContainer theme={headerTheme} hideUserInfo />
         ) : (
           <HeaderContainer />
         )}

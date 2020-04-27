@@ -4,7 +4,7 @@ import SignupFormContainer from "../containers/auth/SignupFormContainer";
 
 const SignupPage = () => {
   return (
-    <Layout headerTheme="inverse">
+    <Layout headerTheme="inverse" hideUserInfo={true}>
       <SignupFormContainer />
     </Layout>
   );

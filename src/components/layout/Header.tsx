@@ -8,25 +8,35 @@ type HeaderProps = {
   user: User | null;
   theme: "default" | "inverse";
   onLogout: () => void;
+  hideUserInfo?: boolean;
 };
 
-const Header = ({ user, theme, onLogout }: HeaderProps) => {
+const Header = ({
+  user,
+  theme,
+  onLogout,
+  hideUserInfo: hideSignin,
+}: HeaderProps) => {
   return (
     <div css={[style, themes[theme]]}>
-      <div>
-        {user ? (
-          <div className="user">
-            <p>{user.username}</p>{" "}
-            <Link to="#" onClick={onLogout}>
-              signout
-            </Link>
-          </div>
-        ) : (
-          <div className="user">
-            <Link to="/signin">signin</Link>
-          </div>
-        )}
-      </div>
+      {!hideSignin ? (
+        <div>
+          {user ? (
+            <div className="user">
+              <p>{user.username}</p>{" "}
+              <Link to="#" onClick={onLogout}>
+                signout
+              </Link>
+            </div>
+          ) : (
+            <div className="user">
+              <Link to="/signin">signin</Link>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div></div>
+      )}
       <div className="logo">
         <Link to="/">
           <span>g</span>enie-of-the-lamp
