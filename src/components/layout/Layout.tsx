@@ -22,6 +22,7 @@ const Layout = ({ children, full, headerTheme }: LayoutProps) => {
     #content {
       ${full ? "" : "width: 800px; margin: 0 auto 0;"}
       height: 100%;
+      padding-top: 3rem;
     }
   `;
 
