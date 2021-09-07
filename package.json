@@ -37,7 +37,7 @@
     "redux-thunk": "^2.3.0",
     "remark": "^12.0.0",
     "remark-breaks": "^1.0.5",
-    "remark-html": "^11.0.1",
+    "remark-html": "^13.0.2",
     "sanitize-html": "^1.23.0",
     "tslint": "^6.1.0",
     "typesafe-actions": "^5.1.0",
